@@ -1,0 +1,82 @@
+@charset "utf-8";
+@import "_reset.scss";
+
+// Sticky footer
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+footer {
+	margin-top: auto;
+}
+
+// centering
+header,footer {
+	display: flex;
+	align-items: center;
+}
+
+footer {
+	flex-direction: column;
+}
+
+// sizing
+header,footer {
+	padding: 1rem 5%;
+}
+
+// gradient
+header {
+	background: linear-gradient(to right, #309, #3cf);
+}
+
+footer {
+	background: linear-gradient(to right, #3cf, #3c6);
+}
+
+// header
+header {
+	margin-bottom: 1em;
+}
+
+#sitename {
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+// main
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	padding: 0 5%;
+}
+
+.function-box {
+	width: 100%;
+	margin-bottom: 1em;
+	border-bottom: 0.2rem solid #000;
+}
+
+main .function-box:last-child {
+	border-bottom: 0;
+}
+
+.function-box form {
+	margin-bottom: 1em;
+}
+
+// footer
+footer, footer a {
+	color: #f6f6f6;
+	text-decoration: none;
+}
+
+footer a:not(:hover):visited {
+	color: #f6f6f6;
+}

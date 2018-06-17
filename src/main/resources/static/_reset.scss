@@ -1,0 +1,157 @@
+@charset "utf-8";
+
+$font-color: #444 !default;
+$font-family: 'Hiragino Kaku Gothic ProN','Lucida Grande',Meiryo, sans-serif !default;
+
+$anchor-color: #005ead !default;
+$anchor-visited-color: #9c529c !default;
+$anchor-hover-color: #e60000 !default;
+
+$anchor-visited-disable: false !default;
+@if($anchor-visited-disable) {
+    $anchor-visited-color: $anchor-color;
+}
+
+// start reset
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn,
+em, img, ins, kbd, q, samp, small,
+strong, sub, sup, var, b, i, dl, dt, dd,
+ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr,
+th, td, article, aside, canvas, details,
+figcaption, figure, footer, header, hgroup,
+menu, nav, section, summary, time, mark,
+img audio, video {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: $font-color;
+    line-height: 1.4;
+    font-size: 14px;
+    font-size: 1.4em; // Chromeがバグるからemで
+    font-family: $font-family;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background-color: #fff;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+header, nav, main, article, aside, section, footer {
+    display: block;
+}
+
+code {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+pre, pre code {
+    font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+}
+
+input, select {
+    vertical-align: middle;
+}
+
+legend {
+    margin-left: 0.5em;
+}
+
+fieldset {
+    margin-bottom: 1em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: $anchor-color;
+    text-decoration: underline;
+    cursor: pointer;
+    &:visited {
+        color: $anchor-visited-color;
+    }
+    &:hover {
+        color: $anchor-hover-color;
+    }
+}
+// end reset
+
+// max-width -> pixel > n
+// min-width -> pixel < n
+$mediaquery: (
+    sp: 414px, // 0-414 == sp
+    // 415-1024 == tablet
+    pc: 1025px // 1025- == pc
+);
+@mixin only-sp {
+    @media screen and (max-width: map-get($mediaquery,sp)) {
+        @content;
+    }
+}
+
+@mixin only-tab {
+    @media screen and (min-width: map-get($mediaquery,sp)+1) and (max-width: map-get($mediaquery,pc)-1) {
+        @content;
+    }
+}
+
+@mixin only-pc {
+    @media screen and (min-width: map-get($mediaquery,pc)) {
+        @content;
+    }
+}
+
+@mixin not-sp {
+    @media screen and (min-width: map-get($mediaquery,sp)+1) {
+        @content;
+    }
+}
+
+@mixin not-tab {
+    @media screen and (max-width: map-get($mediaquery,sp)), screen and (min-width: map-get($mediaquery,pc)) {
+        @content;
+    }
+}
+
+@mixin not-pc {
+    @media screen and (max-width: map-get($mediaquery,pc)-1) {
+        @content;
+    }
+}
+
+@include only-sp {
+    .sp-none, .tab-only, .pc-only {
+        display: none !important;
+    }
+}
+
+@include only-tab {
+    .tab-none, .pc-only, .sp-only {
+        display: none !important;
+    }
+}
+
+@include only-pc {
+    .pc-none, .tab-only, .sp-only {
+        display: none !important;
+    }
+}
+
+.none {
+    display: none !important;
+}

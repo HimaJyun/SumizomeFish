@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no, email=no, address=no">
+    <meta name="author" content="HimaJyun">
+    <title>SumizomeFish</title>
+    <link rel="stylesheet" href="./sumizomefish.css">
+</head>
+
+<body>
+<header>
+    <a href="/" id="sitename">SumizomeFish</a>
+</header>
+
+<main>
+    <div class="function-box">
+        <h1>Save</h1>
+        <form action="save/run" method="GET">
+            <textarea required name="url" cols="30" rows="5" placeholder="Enter links(Newline-delimited)"></textarea>
+            <p>
+                <label>Get direct link:
+                    <input name="crawl" type="checkbox">
+                </label>
+                <input type="submit" value="Save">
+            </p>
+        </form>
+    </div>
+    <div class="function-box">
+        <h1>View</h1>
+        <form action="run/view" method="GET">
+            <p>
+                <input type="text" name="target">
+                <input type="submit" value="View">
+            </p>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>
+        <a href="https://github.com/HimaJyun/SumizomeFish">SumizomeFish</a> 0.0.1 - &copy; 2018
+        <a href="https://jyn.jp/">HimaJyun</a>
+    </p>
+</footer>
+</body>
+
+</html>
